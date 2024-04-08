@@ -32,7 +32,7 @@ import java.util.random.*;
 /**
  * Representation of a deck of cards
  *
- * @author Maxwell Aiello
+ * @author Jordan Garcia
  *
  * @version 1.0.0 2024-03-26 Initial implementation
  */
@@ -44,8 +44,6 @@ public class Deck extends Pile
 	Stack<Card> cards = new Stack<Card>();
 	private int cardTotal = 0;
 
-
-	
 	/**
 	 * Methods
 	 */
@@ -72,7 +70,7 @@ public class Deck extends Pile
 				//Add card to array
 				cards.add(currentCard);
 				//Increment cardTotal
-				cardTotal++;
+				this.cardTotal++;
 				}
 			}
 		//Cards are in sequential order, shuffle them
@@ -96,6 +94,7 @@ public class Deck extends Pile
 		checkIntegrity();
 		
 		//Return top of stack
+		this.cardTotal--;
 		return this.cards.pop();
 		} // end deal()
 	
@@ -132,7 +131,7 @@ public class Deck extends Pile
 	
 	//Determine if the card stack is empty
 	public boolean isEmpty() {
-		return (this.cardTotal <= 0);
+		return (this.cardTotal <= 0) ;
 	} // end isEmpty()
 	
 	

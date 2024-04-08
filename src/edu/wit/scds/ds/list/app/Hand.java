@@ -30,7 +30,7 @@ import java.util.ArrayList;
 /**
  * Representation of a hand of cards
  *
- * @author Maxwell Aiello
+ * @author Jordan Garcia
  *
  * @version 1.0.0 2024-03-26 Initial implementation
  */

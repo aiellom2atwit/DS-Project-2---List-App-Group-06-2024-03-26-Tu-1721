@@ -8,7 +8,9 @@ import java.util.Scanner ;
 import java.util.random.RandomGenerator ;
 
 /**
+ * Gameloop for Crazy Eights
  * 
+ * @author Maxwell Aiello
  */
 public class CrazyEights {
 
@@ -125,8 +127,31 @@ public class CrazyEights {
 		//Players take turns
 		while ( !gameOver )
 			{
+			// If deck is empty game is over
+			if ( deck.isEmpty() )
+				{
+				//Deck is empty
+				gameOver() ;
+				break ;
+				}
+			// Check if player played all cards
 			for ( int i = 0 ; i < players.length ; i++ )
 				{
+				if (players[ i ].getHand().isEmpty() )
+					{
+					//Player played all cards in hand
+					gameOver() ;
+					break ;
+					}
+			}
+			for ( int i = 0 ; i < players.length ; i++ )
+				{
+				// If deck is empty, players cannot take any more turns
+				if ( deck.isEmpty() )
+					{
+					gameOver() ;
+					break ;
+					}
 				if ( botMode == true && i == 0 )
 					{
 					//Bot turn
@@ -140,21 +165,6 @@ public class CrazyEights {
 					playerTurn( players[ i ] ) ;
 					}
 				} // end for
-			
-			// TODO check for winners
-			if ( deck.isEmpty() )
-				{
-				//Deck is empty
-				gameOver() ;
-				}
-			for ( int i = 0 ; i < players.length ; i++ )
-				{
-				if (players[ i ].getHand().isEmpty() )
-					{
-					//Player played all cards in hand
-					gameOver() ;
-					}
-				}
 			
 			
 			} // end while
@@ -179,12 +189,14 @@ public class CrazyEights {
 		boolean foundWinner = false ;
 		for ( int i = 0 ; i < playerScores.length ; i++ )
 			{
-			if (foundWinner == true)
+			if ( foundWinner == true && playerScores[ i ] == bestScore )
 				{
 				tieGame = true;
 				}
-			if ( playerScores[ i ] == bestScore ) ;
-			foundWinner = true ;
+			else if ( playerScores[ i ] == bestScore )
+				{
+				foundWinner = true ;
+				}
 			}
 		
 		//Tied game
@@ -206,7 +218,24 @@ public class CrazyEights {
 			System.out.println( "Error in declaring winner." ) ;
 		}
 		
-		System.out.printf( "GAME RESULT: %s WINS!%n", players[ winnerIndex ].getPlayerName() ) ;
+		if (botMode == false)
+			{
+			System.out.printf( "GAME RESULT: %s WINS!%n", players[ winnerIndex ].getPlayerName() ) ;
+			}
+		else
+			{
+			//Print bot wins if bot wins else print player wins
+			//TODO
+			if (winnerIndex == 0)
+				{
+				System.out.printf( "GAME RESULT: BOT WINS!%n" ) ;
+				}
+			else
+				{
+				System.out.printf( "GAME RESULT: %s WINS!%n", players[ winnerIndex ].getPlayerName() ) ;
+				}
+			}
+		System.exit( 0 ) ;
 	}
 	
 	public static void botTurn( Player bot )

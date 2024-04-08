@@ -51,7 +51,7 @@ import java.util.Objects ;
  *     <li>revise {@code toString()} for greater formatting flexibility and control
  *     </ul><br>
  *
- * @author Your Name    // TODO
+ * @author Nicholas Souza
  *
  * @version 2.3.0 2024-03-26 Modifications for use for our game
  */

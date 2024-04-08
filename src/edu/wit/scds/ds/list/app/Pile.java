@@ -33,7 +33,7 @@ import java.util.List ;
  * <p>
  * the bottom card is at position 0
  *
- * @author Maxwell Aiello
+ * @author Nicholas Souza
  *
  * @version 1.0.0 2024-03-26 Initial implementation
  */
